@@ -13,12 +13,12 @@ createWine.addEventListener('submit', addWine);
 function addWine(event){
     event.preventDefault();
     
-    const createFormData = new FormData(event.target);
-    const variety = createFormData.get('variety');
-    const producer = createFormData.get('producer');
-    const region = createFormData.get('region');
-    const vintage = createFormData.get('vintage');
-    const notes = createFormData.get('notes');
+    const createWineFormData = new FormData(event.target);
+    const variety = createWineFormData.get('variety');
+    const producer = createWineFormData.get('producer');
+    const region = createWineFormData.get('region');
+    const vintage = createWineFormData.get('vintage');
+    const notes = createWineFormData.get('notes');
 
     const wine = {
         variety: variety,
@@ -28,7 +28,16 @@ function addWine(event){
         notes: notes
     }
 
-    displayWine(wine);
+    // persistWine(wine);
+    fetch(winesURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(wine)
+    })
+    .then(response => response.json())
+    .then(wine => displayWine(wine))
+
+    // displayWine(wine);
 }
 
 function displayWine(wine){
