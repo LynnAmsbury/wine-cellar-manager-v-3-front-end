@@ -8,7 +8,9 @@ fetch(winesURL)
 const createWine = document.querySelector('#create-wine')
 const winesContainer = document.querySelector('#wines-container')
 
-createWine.addEventListener('submit', (event)=>{
+createWine.addEventListener('submit', addWine);
+
+function addWine(event){
     event.preventDefault();
     
     const createFormData = new FormData(event.target);
@@ -27,7 +29,7 @@ createWine.addEventListener('submit', (event)=>{
     }
 
     displayWine(wine);
-})
+}
 
 function displayWine(wine){
     winesContainer.innerHTML += `
