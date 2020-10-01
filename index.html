@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
     <title>Wine Cellar Manager</title>
-</head>
-<body>
-    <h1>Wine Cellar Manager</h1>
-    <form id="create-wine">
-        <input type="text" name="variety" placeholder="Variety"/>
-        <input type="text" name="producer" placeholder="Producer"/>
-        <input type="text" name="region" placeholder="Region"/>
-        <input type="number" name="vintage" placeholder="Vintage Year"/>
-        <input type="text" name="notes" placeholder="Notes"/>
-        <input type="submit" value="Add Wine"/>
-    </form>
+  </head>
+  <body>
+    <header>
+      <h1 id="logo">Wine Cellar Manager</h1>
+    </header>
 
-    <section id="wines-container"></section>
-</body>
-</html></html>
+    <main>
+      <section id="wines-container">
+        <h2>Wines in Your Collection</h2>
+      </section>
+      <form id="create-wine">
+          <h2>Add New Wines</h2>
+          <label for="variety">
+              <h3>Variety:</h3>
+          </label>
+        <input type="text" name="variety" placeholder="Variety" />
+        <label for="Producer">
+            <h3>Producer:</h3>
+        </label>
+        <input type="text" name="producer" placeholder="Producer" />
+        <label id="Region">
+            <h3>Region:</h3>
+        </label>
+        <input type="text" name="region" placeholder="Region" />
+        <label id="vintage">
+            <h3>Vintage Year:</h3>
+        </label>
+        <input type="number" name="vintage" placeholder="Vintage Year" />
+        <label id="notes">
+            <h3>Notes:</h3>
+        </label>
+        <input type="text" name="notes" placeholder="Notes" />
+        <input type="submit" value="Add Wine" />
+      </form>
+    </main>
+
+    <footer></footer>
+  </body>
+</html>

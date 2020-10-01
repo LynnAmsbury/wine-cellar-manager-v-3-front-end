@@ -27,31 +27,58 @@ function addWine(event){
         vintage: vintage,
         notes: notes
     }
+    
+    persistWine(wine);
+}
 
-    // persistWine(wine);
+function showWines(wines){
+    wines.forEach(displayWine);
+}
+
+// function displayWine(wine){
+//     winesContainer.innerHTML += `<ul id="wine-list-item">
+//         <li>${wine.variety}, ${wine.producer}, ${wine.region}, ${wine.vintage} ${wine.notes}</li>
+//         <button onclick=${deleteWine}>Remove This Wine</button>
+//     </ul>`
+// }
+
+function displayWine(wine){
+    // winesContainer.innerHTML += `<ul id="wine-list-item">
+    //     <li>${wine.variety}, ${wine.producer}, ${wine.region}, ${wine.vintage} ${wine.notes}</li>
+    //     <button onclick=${deleteWine}>Remove This Wine</button>
+    // </ul>`
+
+    const wineCard = document.createElement('div');
+    wineCard.classList.add('wine-card');
+
+    const wineVariety = document.createElement('h2');
+    wineVariety.textContent = wine.variety
+    const wineProducer = document.createElement('p');
+    wineProducer.textContent = wine.producer
+    const wineRegion = document.createElement('p');
+    wineRegion.textContent = wine.region
+    const wineVintage = document.createElement('p');
+    wineVintage.textContent = wine.vintage
+    const wineNotes = document.createElement('p');
+    wineNotes.textContent = wine.notes
+
+    const deleteButton = document.createElement('button')
+    deleteButton.textContent = 'Remove Wine';
+    deleteButton.addEventListener('click', ()=>{
+        wineCard.remove()
+        fetch(`${baseURL}/wines/${wine.id}`, { method: 'DELETE' })
+    });
+
+    wineCard.append(wineVariety, wineProducer, wineRegion, wineVintage, wineNotes, deleteButton);
+    winesContainer.append(wineCard);
+}
+
+function persistWine(wine){
     fetch(winesURL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(wine)
     })
     .then(response => response.json())
-    .then(wine => displayWine(wine))
-
-    // displayWine(wine);
-}
-
-function displayWine(wine){
-    winesContainer.innerHTML += `
-    <div>
-      <h2>${wine.variety}</h2>
-      <h3>${wine.producer}</h3>
-      <h3>${wine.region}</h3>
-      <h3>${wine.vintage}</h3>
-      <h3>${wine.notes}</h3>
-    </div>
-  `
-}
-
-function showWines(wines){
-    wines.forEach(displayWine);
-}
+    .then(wine => displayWine(wine));
+};
