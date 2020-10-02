@@ -19,7 +19,7 @@ The Wine Cellar Manager (version 3) is a full-stack application made with Ruby o
 
 ## Intro Video
 
-Coming soon!
+[Mod 3 Flatiron Project by Lynn Amsbury](https://youtu.be/DXScphh6gBU)
 
 ## Technologies
 
