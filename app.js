@@ -55,50 +55,58 @@ function displayWine(wine) {
     deleteButton.textContent = "Remove Wine";
     deleteButton.addEventListener("click", ()=>deleteWine(wine.id, wineCard));
 
-    const editForm = document.createElement('form');
+    const updateButton = document.createElement("button");
+    updateButton.textContent = "Update Wine";
+    updateButton.addEventListener("click", ()=>{
+        document.querySelector(`#edit-form-${wine.id}`).classList.remove("hidden");
+    })
 
-    let editVariety = document.createElement('input');
-    editVariety.type = 'text';
-    editVariety.name = 'variety';
-    editVariety.placeholder = 'Variety Name';
+    const editForm = document.createElement("form");
+    editForm.id =`edit-form-${wine.id}`;
+    editForm.classList.add("hidden");
+
+    let editVariety = document.createElement("input");
+    editVariety.type = "text";
+    editVariety.name = "variety";
+    editVariety.placeholder = "Variety Name";
     editVariety.value = wine.variety;
 
-    let editProducer = document.createElement('input');
-    editProducer.type = 'text';
-    editProducer.name = 'producer';
-    editProducer.placeholder = 'Producer';
+    let editProducer = document.createElement("input");
+    editProducer.type = "text";
+    editProducer.name = "producer";
+    editProducer.placeholder = "Producer";
     editProducer.value = wine.producer;
 
-    let editRegion = document.createElement('input');
-    editRegion.type = 'text';
-    editRegion.name = 'region';
-    editRegion.placeholder = 'Region';
+    let editRegion = document.createElement("input");
+    editRegion.type = "text";
+    editRegion.name = "region";
+    editRegion.placeholder = "Region";
     editRegion.value = wine.region;
 
-    let editVintage = document.createElement('input');
-    editVintage.type = 'number';
-    editVintage.name = 'vintage';
-    editVintage.placeholder = 'Vintage Year';
+    let editVintage = document.createElement("input");
+    editVintage.type = "number";
+    editVintage.name = "vintage";
+    editVintage.placeholder = "Vintage Year";
     editVintage.value = wine.vintage;
 
-    let editNotes = document.createElement('input');
-    editNotes.type = 'text';
-    editNotes.name = 'notes';
-    editNotes.placeholder = 'Notes';
+    let editNotes = document.createElement("input");
+    editNotes.type = "text";
+    editNotes.name = "notes";
+    editNotes.placeholder = "Notes";
     editNotes.value = wine.notes;
 
-    const editFormSubmitButton = document.createElement('input');
-    editFormSubmitButton.type = 'submit';
-    editFormSubmitButton.value = 'Update Entry';
+    const editFormSubmitButton = document.createElement("input");
+    editFormSubmitButton.type = "submit";
+    editFormSubmitButton.value = "Update Entry";
 
-    editForm.addEventListener('submit', (event)=>{
+    editForm.addEventListener("submit", (event)=>{
         event.preventDefault();
         const editFormData = new FormData(event.target);
-        const variety = editFormData.get('variety');
-        const producer =  editFormData.get('producer');
-        const region =  editFormData.get('region');
-        const vintage = editFormData.get('vintage');
-        const notes = editFormData.get('notes');
+        const variety = editFormData.get("variety");
+        const producer =  editFormData.get("producer");
+        const region =  editFormData.get("region");
+        const vintage = editFormData.get("vintage");
+        const notes = editFormData.get("notes");
 
         const updatedWine = { variety, producer, region, vintage, notes };
 
@@ -109,11 +117,12 @@ function displayWine(wine) {
         wineNotes.textContent = notes;
         
         fetch(`${winesURL}/${wine.id}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updatedWine)
         })
-        
+        // console.log(event.target)
+        event.target.classList.add("hidden");
     });
 
     editForm.append(editVariety, editProducer, editRegion, editVintage, editNotes, editFormSubmitButton);
@@ -124,6 +133,7 @@ function displayWine(wine) {
     wineVintage,
     wineNotes,
     deleteButton,
+    updateButton,
     editForm
     );
     winesContainer.append(wineCard);

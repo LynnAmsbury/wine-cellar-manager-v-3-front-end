@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="app.js" defer></script>
-    <title>Wine Cellar Manager</title>
-  </head>
-  <body>
-    <header>
-      <h1 id="logo">Wine Cellar Manager</h1>
-    </header>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="app.js" defer></script>
+        <title>Wine Cellar Manager</title>
+    </head>
+    <body>
+        <header>
+            <h1 id="logo">Wine Cellar Manager</h1>
+        </header>
 
-    <main>
-      <section id="wines-container">
-        <h2>Wines in Your Collection</h2>
-      </section>
-      <form id="create-wine-form">
-        <h2>Add New Wines</h2>
-        <label for="variety">
-          <h3>Variety Name:</h3>
-        </label>
-        <input type="text" name="variety" placeholder="Variety Name" />
-        <label for="Producer">
-          <h3>Producer:</h3>
-        </label>
-        <input type="text" name="producer" placeholder="Producer" />
-        <label id="Region">
-          <h3>Region:</h3>
-        </label>
-        <input type="text" name="region" placeholder="Region" />
-        <label id="vintage">
-          <h3>Vintage Year:</h3>
-        </label>
-        <input type="number" name="vintage" placeholder="Vintage Year" />
-        <label id="notes">
-          <h3>Notes:</h3>
-        </label>
-        <input type="text" name="notes" placeholder="Notes" />
-        <input type="submit" value="Add Wine" />
-      </form>
-    </main>
+        <main id="image">
+            
+            <section id="wines-container">
+                <h2>Wines in Your Collection</h2>
+            </section>
 
-    <footer></footer>
-  </body>
+            <form id="create-wine-form">
+                <h2>Add New Wines</h2>
+                <label for="variety">
+                    <h4>Variety Name:</h4>
+                </label>
+                <input type="text" name="variety" placeholder="Variety Name" />
+                <label for="Producer">
+                    <h4>Producer:</h4>
+                </label>
+                <input type="text" name="producer" placeholder="Producer" />
+                <label id="Region">
+                    <h4>Region:</h4>
+                </label>
+                <input type="text" name="region" placeholder="Region" />
+                <label id="vintage">
+                    <h4>Vintage Year:</h4>
+                </label>
+                <input type="number" name="vintage" placeholder="Vintage Year" />
+                <label id="notes">
+                    <h4>Notes:</h4>
+                </label>
+                <input type="text" name="notes" placeholder="Notes" />
+                <input type="submit" value="Add Wine" />
+            </form>
+        </main>
+
+        <footer></footer>
+    </body>
 </html>
