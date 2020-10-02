@@ -387,6 +387,10 @@ main {
     background-size: contain;
 }
 
+button {
+  margin-right: 5px;
+}
+
 .hidden {
     display: none;
 }
